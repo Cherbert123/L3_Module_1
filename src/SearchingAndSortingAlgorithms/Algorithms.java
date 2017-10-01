@@ -1,5 +1,6 @@
 package SearchingAndSortingAlgorithms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,17 +58,60 @@ public class Algorithms {
 
 	
 
-	public static List<String> sortScores(List<Double> results) {
-		List<String> returnable = Arrays.asList(new String[] {"60.3", "60.2", "80.4", "67.2", "95.0", "85.5", "40.7", "68.2", "38.4", "94.2", "85.0", "84.5", "50.1", "66.6" });
-		
-		for(int i = 0; i < results.size(); i++) {
-			if(Integer.parseInt(returnable.get(i)) > Integer.parseInt(returnable.get(i + 1))) {
-				String temp = returnable.get(i + 1);
-				returnable.get(i + 1).equals(returnable.get(i));
-				returnable.get(i).equals(temp);
+	public static List<Double> sortScores(List<Double> results) {
+		List<Double> returnable = new ArrayList<Double>();
+		double previousSmallest = 0; 
+		double smallest = 10000.0;
+		for(int x = 0; x < results.size();x++) {
+		for(int i = 0; i < results.size();i++) {
+			if(results.get(i)< smallest && results.get(i) > previousSmallest) {
+				smallest = results.get(i);
 			}
 		}
-		System.out.println(returnable);
+		returnable.add(smallest);
+		previousSmallest = smallest;
+		smallest = 10000.0;
+		}
+		return returnable;
+	}
+
+	public static Object sortDNA(List<String> unsortedSequences) {
+		List<String> returnable = new ArrayList<String>();
+		int previousSmallest = 0; 
+		int smallest = 10000;
+		String Addsmallest = "";
+		for(int x = 0; x < unsortedSequences.size();x++) {
+		for(int i = 0; i < unsortedSequences.size();i++) {
+			if(unsortedSequences.get(i).length() < smallest && unsortedSequences.get(i).length() > previousSmallest) {
+				smallest = unsortedSequences.get(i).length();
+				Addsmallest = unsortedSequences.get(i);
+			}
+		}
+		returnable.add(Addsmallest);
+		previousSmallest = smallest;
+		smallest = 10000;
+		}
+		return returnable;
+	}
+
+	public static List<String> sortWords(List<String> words) {
+		List<String> returnable = new ArrayList<String>();
+		String previousSmallest = "ZZZ"; 
+		String smallest = "ZZZ";
+		for(int x = 0; x < words.size();x++) {
+		for(int i = 0; i < words.size();i++) {
+			smallest = "ZZZ";
+			if(smallest.compareTo(words.get(i)) > 0 && words.get(i).compareTo(previousSmallest) < 0) {
+				smallest = words.get(i);
+				
+			}else{
+				
+			}
+		}
+		returnable.add(smallest);
+		previousSmallest = smallest;
+		
+		}
 		return returnable;
 	}
 
