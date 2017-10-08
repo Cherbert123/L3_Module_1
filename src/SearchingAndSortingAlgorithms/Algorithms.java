@@ -95,24 +95,20 @@ public class Algorithms {
 	}
 
 	public static List<String> sortWords(List<String> words) {
-		List<String> returnable = new ArrayList<String>();
-		String previousSmallest = "ZZZ"; 
-		String smallest = "ZZZ";
-		for(int x = 0; x < words.size();x++) {
-		for(int i = 0; i < words.size();i++) {
-			smallest = "ZZZ";
-			if(smallest.compareTo(words.get(i)) > 0 && words.get(i).compareTo(previousSmallest) < 0) {
-				smallest = words.get(i);
-				
-			}else{
-				
+//		System.out.println(words.get(i).compareTo(toReturn.get(i)));
+		List<String> toReturn = new ArrayList<String>();
+
+		for(int i = 0; i < words.size(); i++){
+			for(int x = 0; i < words.size(); i++){
+			if(toReturn.size() < i + 1){
+				toReturn.add(words.get(i));
+			}else if(words.get(x).compareTo(toReturn.get(i)) < 0){
+				toReturn.get(i).equals(words.get(x));
 			}
 		}
-		returnable.add(smallest);
-		previousSmallest = smallest;
-		
 		}
-		return returnable;
+		return toReturn;
+		
 	}
 
 	
